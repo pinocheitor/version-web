@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Tickets</title>
+</head>
+<body>
+    <h1>Generador de Tickets</h1>
+
+    <form method="POST" action="/">
+        <label for="title">Ingrese el título de alarma:</label><br>
+        <input type="text" id="title" name="title"><br><br>
+        <input type="submit" value="Generar Título">
+    </form>
+
+    {% if ticket %}
+        <h2>Título del Ticket:</h2>
+        <p>{{ ticket }}</p>
+    {% endif %}
+
+    {% if subticket %}
+        <h2>Título del Subticket:</h2>
+        <p>{{ subticket }}</p>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
